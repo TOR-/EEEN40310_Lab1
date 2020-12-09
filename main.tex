@@ -1,0 +1,37 @@
+\documentclass[article,onecolumn]{TOREngReport}
+
+\renewcommand{\thetable}{\arabic{section}.\arabic{table}}
+
+\begin{document}
+% Define report details
+\TOREngReportDetails{Power Converter Design}{EEEN40310 Power Electronic Technology}{UCD}{Tiarnach \'O Riada 16315466}
+\makedeclarationbox{I declare that all material in this assessment is my own work.}{\DTMtoday}
+
+\pagenumbering{roman}
+\pagestyle{preface}
+\tableofcontents
+\cleardoublepage
+
+\pagenumbering{arabic}
+\pagestyle{body}
+% FOR EACH SECTION
+\include{src/intro}
+
+\clearpage
+
+%\input{src/converter_design_results}
+%\input{src/converter_simulation_results}
+%\input{src/initial_converter_test_results}
+
+\clearpage
+
+\input{src/pwm_generation_design_results}
+\input{src/pwm_circuit_simulation_results}
+
+\clearpage
+
+\input{src/combined_test_results}
+
+\input{src/conclusions}
+
+\end{document}

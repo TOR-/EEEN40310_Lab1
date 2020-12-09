@@ -1,0 +1,34 @@
+\section{PWM Generation Design Results}
+\begin{table}[h]
+	\centering
+	\begin{tabular}{p{0.2\linewidth}cc}
+		\toprule
+		\multicolumn{3}{l}{Conditions: $+V_S=\SI{0}{\volt}$, $-V_S=\SI{0}{\volt}$, $V_{th-}=\SI{0}{\volt}$, $V_{th+}=\SI{0}{\volt}$}\\
+		\midrule
+		Component & Equation & Value\\
+		$R_2$ & \cref{eq:PWM r choice} & \SI{8.2}{\kilo\ohm}\\
+		$R_1$ & \cref{eq:PWM r choice} & \SI{2.2}{\kilo\ohm}\\
+		$R$ & \cref{eq:PWM RC choice} & \SI{560}{\ohm}\\
+		$C$ & \cref{eq:PWM RC choice} & \SI{22}{\nano\farad}\\
+		$V_{ramp,p-p}$ & $V_{ramp,p-p} <\SI{4}{\volt}$ & \SI{3.87}{\volt}\\
+		Reference voltage for required duty cycle & & \SI{0}{\volt} \\%TODO
+		\bottomrule
+	\end{tabular}
+\end{table}
+The amplitude of the ramp voltage over the capacitor should be less than \SI{4}{\volt}p--p as the comparator has a limit to the input voltage it can withstand. This is achieved through selection of appropriate resistors in the voltage divider formed by $R_1$ and $R_2$.
+\begin{align*}
+	V_{th} = \SI{2}{\volt}&> \beta \left\vert V_{sat} \right\vert\qquad ,\beta = \frac{R_1}{R_1 + R_2}\\
+	\iff \frac{2}{\left\vert V_{sat} \right\vert} &> \beta
+\end{align*}
+Assuming the saturation voltage $\left\vert V_{sat} \right\vert$ of the op-amp is $\sim \left\vert V_{s} \right\vert - \SI{1}{\volt}$:
+\begin{align*}
+	\frac{2}{9} \simeq 0.22 &> \beta \\
+\end{align*}
+To satisfy the above requirement, resistors were chosen as shown below. They were chosen of a magnitude such that the current through the voltage divider would be small; it is $\sim \SI{190}{\micro\ampere}$ which is rather small compared to other currents in the circuit.
+\begin{align}\label{eq:PWM r choice}
+	\beta &= \frac{\SI{2.2}{\kilo\ohm}}{\SI{2.2}{\kilo\ohm} + \SI{8.2}{\kilo\ohm}} \simeq 0.21 < 0.22
+\end{align}
+Values for R and C derive from the following relation between the desired switching frequency, the RC time constant, and the voltage divider resistance ratio $\beta$. We chose a value for C first, of \SI{22}{\nano\farad}, as there are less choices for capacitors available in the lab. The exact value of the capacitor was less important than it being the right magnitude not to require an inordinately large or small resistance. 
+\begin{align}\label{eq:PWM RC choice}
+	f_s &= \frac{1}{2 R C \ln \left(\frac{1+\beta}{1-\beta}\right)}
+\end{align}

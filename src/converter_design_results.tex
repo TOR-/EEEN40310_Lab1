@@ -1,0 +1,37 @@
+\section{Converter Design Results}
+% For this section it is sufficient to complete the following tables. Make sure that you specify the values of all components used – otherwise it is impossible to check the calculations and marks will be deducted.
+\begin{table}[h]
+	\centering
+	\caption{Design Calculations}
+	\begin{tabular}{lcp{0.8\linewidth}}
+		\toprule
+		Quantity&Value&Assumptions and design comments\\
+		\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
+		$f_s$ & \SI{100}{\kilo\hertz} & \\
+		$L$ & \SI{83.2}{\micro\henry} & $L_{min} = \frac{V_{out}(1-D_{min})}{2 f_s I_{out,min}} = \SI{60}{\micro\henry}$ where $D_{min}=\frac{V_{out}}{V_{in,max}\eta} = 0.5208 \because \eta=0.8$.  \SI{83.2}{\micro\henry} is the inductance of the inductor built during the lab.\\
+		$C$ & \SI{10}{\micro\farad} & $C_{min}=\frac{\Delta i_{L,max}}{8 f_s \Delta V_{out}}$\\
+		\bottomrule
+	\end{tabular}
+	\label{tab:converter:design calculations}
+\end{table}
+
+\begin{table}[h]
+	\centering
+	\caption{Efficiency Calculations}
+	\begin{tabular}{lcl}
+		\toprule
+		\multicolumn{3}{l}{Conditions: $V_{in}=\SI{0}{\volt}$, $V_{in}=\SI{0}{\volt}$, $I_{out}=\SI{0}{\ampere}$, $P_{out}=\SI{0}{\watt}$}\\
+		\midrule
+		Component or Loss&Loss Equation&Value $\left[\si{\watt}\right]$\\
+		\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
+		Switch Conduction & & \\
+		Switch Switching Loss & & \\
+		Diode Conduction & & \\
+		Diode Forward voltage loss & & \\
+		Inductor conduction loss & & \\
+		Capacitor conduction loss & & \\
+		Efficiency & & \\
+		\bottomrule
+	\end{tabular}
+	\label{tab:converter:efficiency calculations}
+\end{table}
