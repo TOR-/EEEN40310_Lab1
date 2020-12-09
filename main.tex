@@ -1,4 +1,4 @@
-\documentclass[article,onecolumn]{TOREngReport}
+\documentclass[article]{TOREngReport}
 
 \renewcommand{\thetable}{\arabic{section}.\arabic{table}}
 
@@ -15,9 +15,7 @@
 \pagenumbering{arabic}
 \pagestyle{body}
 % FOR EACH SECTION
-\include{src/intro}
-
-\clearpage
+\input{src/intro}
 
 \input{src/converter_design_results}
 \input{src/converter_simulation_results}

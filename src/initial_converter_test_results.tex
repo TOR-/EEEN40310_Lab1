@@ -7,13 +7,12 @@
 		\toprule
 		Quantity&Value&Comments\\
 		\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
-		Target Inductance Value & \SI{0}{\henry} & \\
-		Required number of turns & 0 & \\
-		Calculated Coil Resistance & \SI{0}{\ohm} & \\
-		Measured Inductance & \SI{0}{\henry} & \\
-		Actual number of turns & 0 & \\
-		Measured resistance (low frequency) & \SI{0}{\ohm} & \\
-		Measured resistance (switching frequency) & \SI{0}{\ohm} & \\
+		Target Inductance Value & \SI{72}{\micro\henry} & Minimum inductance as previously calculated plus safety factor \\
+		Required number of turns & 9 & $N=ceiling\left\lbrace \sqrt{\frac{L}{A_L}}\right\rbrace$ \\
+		Measured Inductance & \SI{83.2252}{\micro\henry} & \\
+		Actual number of turns & 10 & \\
+		Measured resistance (low frequency) & \SI{0.01937}{\ohm} & \\
+		Measured resistance (switching frequency) & \SI{0.02}{\ohm} & \\
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -24,8 +23,27 @@
 
 % In addition to presenting the test results include an answer to the following questions: In your report clearly indicate the question and the answer.
 
-\subsubsection{How has the use of the signal generator (to drive the MOSFET) limited the tests which can be performed?}
 
+\begin{figure}
+	\centering
+	\includegraphics[width=\linewidth]{"img/Converter Output"}
+	\caption{Converter output with ripple}
+	\label{fig:converter op}
+\end{figure}
+
+
+The output voltage for a load of \SI{10}{\ohm} is given in \cref{fig:converter op}. The converter was also tested with loads of \SI{4.7}{\ohm} and \SI{1}{\ohm}. We were unable to provide enough current for the circuit to work with the \SI{1}{\ohm} load.
+
+The output voltages were \SI{5.12}{\volt} for the \SI{10}{\ohm} load (current \SI{0.512}{\ampere}) and \SI{4.73}{\volt} for the \SI{4.7}{\ohm} load (current \SI{1}{\ampere}).
+
+The power input to the circuit was measured for the \SI{4.7}{\ohm} max current load by noting the current drawn from the power supply. This gave $P_{in}=\SI{6.5}{\watt}$, giving an efficiency of 74\%.
+
+\subsubsection{How has the use of the signal generator (to drive the MOSFET) limited the tests which can be performed?}
+It can't emulate the power converter reacting to changes in the input voltage. It also can't vary the duty cycle, being fixed at 0.5.
 \subsubsection{Do the test results and the simulation results agree?}
 % for this question avoid using inexact terms like “roughly the same” or saying they are the same when they are not. Ideally you should quantify any differences and try to explain them
+The following statements apply to the \SI{4.7}{\ohm} load circuit.
 
+The efficiencies are different, with the physical circuit being 12 percentage points more efficient than the simulated circuit. I would have expected this to be the opposite, with the simulation being more efficient than reality. Perhaps the esrs are overestimated or the PMOS model is too lossy.
+
+The simulated output voltage was 4.69 V whereas the tested voltage was measured at 4.73 V. These are rather close.

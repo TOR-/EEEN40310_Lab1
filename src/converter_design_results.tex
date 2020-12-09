@@ -9,28 +9,31 @@
 		\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
 		$f_s$ & \SI{100}{\kilo\hertz} & \\
 		$L$ & \SI{83.2}{\micro\henry} & $L_{min} = \frac{V_{out}(1-D_{min})}{2 f_s I_{out,min}} = \SI{60}{\micro\henry}$ where $D_{min}=\frac{V_{out}}{V_{in,max}\eta} = 0.5208 \because \eta=0.8$.  \SI{83.2}{\micro\henry} is the inductance of the inductor built during the lab.\\
-		$C$ & \SI{10}{\micro\farad} & $C_{min}=\frac{\Delta i_{L,max}}{8 f_s \Delta V_{out}}$\\
+		$C$ & \SI{10}{\micro\farad} & $C_{min}=\frac{\Delta i_{L,max}}{8 f_s \Delta V_{out}}=\SI{3.6}{\micro\farad}$. Allowing for a tolerance of 20\%, the closest capacitor value available was  \SI{10}{\micro\farad}.\\
 		\bottomrule
 	\end{tabular}
 	\label{tab:converter:design calculations}
 \end{table}
 
+The switch resistance $r_S$ and rise time $t_r$ of the PMOS were taken as \SI{0.1}{\ohm} \SI{55}{\nano\second} from the datasheet and the forward voltage drop $V_F$ and resistance $r_d$ of the diode were \SI{1.05}{\volt} and \SI{0.06}{\ohm}. The capacitor esr $r_C$ was taken as \SI{60}{\milli\ohm} from its datasheet. The inductor esr as measured once constructed was \SI{0.02}{\ohm}.
 \begin{table}[h]
 	\centering
 	\caption{Efficiency Calculations}
 	\begin{tabular}{lcl}
 		\toprule
-		\multicolumn{3}{l}{Conditions: $V_{in}=\SI{0}{\volt}$, $V_{in}=\SI{0}{\volt}$, $I_{out}=\SI{0}{\ampere}$, $P_{out}=\SI{0}{\watt}$}\\
+		\multicolumn{3}{l}{Conditions: $V_{in}=\SI{10}{\volt}$, $V_{out}=\SI{5}{\volt}$, $I_{out}=\SI{1}{\ampere}$, $P_{out}=\SI{5}{\watt}$}\\
 		\midrule
 		Component or Loss&Loss Equation&Value $\left[\si{\watt}\right]$\\
 		\cmidrule(r){1-1}\cmidrule(lr){2-2}\cmidrule(l){3-3}
-		Switch Conduction & & \\
-		Switch Switching Loss & & \\
-		Diode Conduction & & \\
-		Diode Forward voltage loss & & \\
-		Inductor conduction loss & & \\
-		Capacitor conduction loss & & \\
-		Efficiency & & \\
+		Switch Conduction &  $r_{S}DI_{out}^2\left(1 + \frac{1}{12}\left(\frac{\Delta i_L}{I_{out}}\right)^2\right)$ & \SI{0.0252}{\watt} \\
+		Switch Switching Loss & $2\frac{V_{in}I_{out}}{2}\frac{t_r}{T}$& \SI{0.055}{\watt}\\
+		Diode Conduction & $r_{S}(1-D)\frac{I_{out}^2}{2}\left(1 + \frac{1}{12}\left(\frac{\Delta i_L}{I_{out}}\right)^2\right)$ & \SI{0.0302}{\watt}\\
+		Diode Forward voltage loss & $v_f\left(1-D\right)I_{out}$ & \SI{0.525}{\volt} \\
+		Inductor conduction loss & $r_L I_{out}^2\left(1 + \frac{1}{12}\left(\frac{\Delta i_L}{I_{out}}\right)^2\right)$ & \SI{1.56}{\watt}\\
+		Capacitor conduction loss & $r_C\frac{\Delta i_L ^2}{12}$ & \SI{0.45}{\milli\watt}\\
+		\midrule
+		Losses & $\Sigma Losses$ & \SI{2.6454}{\watt}\\
+		Efficiency & $\frac{P_{out}}{P_{out}+P_{loss}}$& 65.4\%\\
 		\bottomrule
 	\end{tabular}
 	\label{tab:converter:efficiency calculations}
