@@ -11,7 +11,7 @@
 		$R$ & \cref{eq:PWM RC choice} & \SI{560}{\ohm}\\
 		$C$ & \cref{eq:PWM RC choice} & \SI{22}{\nano\farad}\\
 		$V_{ramp,p-p}$ & $V_{ramp,p-p} <\SI{4}{\volt}$ & \SI{3.87}{\volt}\\
-		Reference voltage for required duty cycle & & \SI{0}{\volt} \\%TODO
+		Reference voltage for required duty cycle & & \SI{0}{\volt}\\%TODO
 		\bottomrule
 	\end{tabular}
 \end{table}
@@ -20,7 +20,7 @@ The amplitude of the ramp voltage over the capacitor should be less than \SI{4}{
 	V_{th} = \SI{2}{\volt}&> \beta \left\vert V_{sat} \right\vert\qquad ,\beta = \frac{R_1}{R_1 + R_2}\\
 	\iff \frac{2}{\left\vert V_{sat} \right\vert} &> \beta
 \end{align*}
-Assuming the saturation voltage $\left\vert V_{sat} \right\vert$ of the op-amp is $\sim \left\vert V_{s} \right\vert - \SI{1}{\volt}$:
+Assuming the saturation voltage $\left\vert V_{sat} \right\vert$ of the op-amp is $\sim \left\vert V_{s} \right\vert - \SI{1}{\volt} = \SI{9}{\volt}$:
 \begin{align*}
 	\frac{2}{9} \simeq 0.22 &> \beta \\
 \end{align*}

@@ -6,7 +6,7 @@ R3 V2 N001 8.2k
 R2 N001 0 2.2k
 V1 vs+ 0 10
 V2 vs- 0 -10
-XU2 0 V2 vs+ vs- N004 LT1357
+XU2 Vc V2 vs+ vs- N004 LT1357
 R12 N005 N004 6.8k
 R§1k N005 0 1k
 Q3 N002 N005 0 0 2N3904
@@ -33,12 +33,13 @@ R6 N007 N006 20m
 .lib C:\users\tor\My Documents\LTspiceXVII\lib\cmp\standard.mos
 .MODEL mur1520d D(IS=3.22361e-06 RS=0.0101677 N=2 EG=1.21579 XTI=3.00528 BV=200 IBV=0.00001 CJO=5.43127e-10 VJ=0.4 M=0.373455 FC=0.5 TT=3.24606e-08 KF=0 AF=1)
 .model IRF9Z34N VDMOS(pchan Rg=3 Rd=42m Rs=31m Vto=-4 Kp=1 Cgdmax=0.5n Cgdmin=.1n Cgs=.48n Cjo=.76n Is=76p Rb=52m mfg=International_Rectifier Vds=-55 Ron=100m Qg=35n)
-.tran 0 3m 0 10n
+.tran 0 1.01m 1m 10n
 .param f=100k D=0.5
 * Sim Directives
 * PWM Source
 .param RL=4.7 Vi=10
 * Load/Source Characteristic
+;SINE(10 2 100)
 .lib LTC.lib
 .backanno
 .end

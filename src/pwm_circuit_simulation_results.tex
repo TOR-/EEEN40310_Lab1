@@ -6,10 +6,23 @@
 \subsubsection{Explain the design basis for the choice of op-amp power supply voltages, +Vs and -Vs? What is the minimum value which could be used for these?}
 
 \subsubsection{What is the power consumption of the PWM circuit? What is this power used for?}
-
+\begin{table}[h]
+	\centering
+	\caption{Power Consumption}
+	\begin{tabular}{ll}
+		\toprule
+		Component&Power Consumed \si{\watt}\\
+		\cmidrule(r){1-1}\cmidrule(l){2-2}
+		PWM Power Supply & $\num{-110.49e-3}+\num{-171.74e-3}=\num{-0.28223}$\\
+		Converter Power Supply & \num{-5.0605}\\
+		Converter Output Voltage & \num{5.0701}\\
+		\bottomrule
+	\end{tabular}
+	\label{tab:pwm power}
+\end{table}
+The power consumption of the PWM circuit is as given in \cref{tab:pwm power}
 \subsubsection{What is the effect of the PWM circuit power consumption on the converter efficiency?}
 %Quantify your answer.
-
 
 \subsection{PWM Generator \& Buck Converter Results}
 % The simulation results presented should validate that the design meets the specification.
